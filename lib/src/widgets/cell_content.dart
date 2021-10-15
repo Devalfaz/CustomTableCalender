@@ -14,6 +14,7 @@ class CellContent extends StatelessWidget {
   final bool isTodayHighlighted;
   final bool isToday;
   final bool isSelected;
+  final bool isSelected1;
   final bool isRangeStart;
   final bool isRangeEnd;
   final bool isWithinRange;
@@ -33,6 +34,7 @@ class CellContent extends StatelessWidget {
     required this.isTodayHighlighted,
     required this.isToday,
     required this.isSelected,
+    required this.isSelected1,
     required this.isRangeStart,
     required this.isRangeEnd,
     required this.isWithinRange,
@@ -90,6 +92,81 @@ class CellContent extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(3),
                       color: Color(0xffe96c83),
+                    ),
+                  )
+                ],
+              ));
+    } else if (isSelected && isToday) {
+      cell = calendarBuilders.selectedBuilder?.call(context, day, focusedDay) ??
+          AnimatedContainer(
+              duration: duration,
+              margin: margin,
+              decoration: calendarStyle.todayDecoration,
+              alignment: Alignment.center,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    text,
+                    style: calendarStyle.todayTextStyle,
+                  ),
+                  Container(
+                    width: 4,
+                    height: 4,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(3),
+                      color: Color(0xffe96c83),
+                    ),
+                  )
+                ],
+              ));
+    } else if (isSelected1 && isToday) {
+      cell = calendarBuilders.selectedBuilder?.call(context, day, focusedDay) ??
+          AnimatedContainer(
+              duration: duration,
+              margin: margin,
+              decoration: calendarStyle.todayDecoration,
+              alignment: Alignment.center,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    text,
+                    style: calendarStyle.todayTextStyle,
+                  ),
+                  Container(
+                    width: 4,
+                    height: 4,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(3),
+                      color: Color(0xff6f7dff),
+                    ),
+                  )
+                ],
+              ));
+    } else if (isSelected1) {
+      cell = calendarBuilders.selectedBuilder?.call(context, day, focusedDay) ??
+          AnimatedContainer(
+              duration: duration,
+              margin: margin,
+              decoration: calendarStyle.selectedDecoration,
+              alignment: Alignment.center,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    text,
+                    style: calendarStyle.selectedTextStyle,
+                  ),
+                  Container(
+                    width: 4,
+                    height: 4,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(3),
+                      color: Color(0xff6f7dff),
                     ),
                   )
                 ],

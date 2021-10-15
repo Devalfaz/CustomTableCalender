@@ -167,6 +167,7 @@ class TableCalendar<T> extends StatefulWidget {
 
   /// Function deciding whether given day should be marked as selected.
   final bool Function(DateTime day)? selectedDayPredicate;
+  final bool Function(DateTime day)? selectedDayPredicate1;
 
   /// Function deciding whether given day is treated as a holiday.
   final bool Function(DateTime day)? holidayPredicate;
@@ -245,6 +246,7 @@ class TableCalendar<T> extends StatefulWidget {
     this.eventLoader,
     this.enabledDayPredicate,
     this.selectedDayPredicate,
+    this.selectedDayPredicate1,
     this.holidayPredicate,
     this.onRangeSelected,
     this.onDaySelected,
@@ -601,6 +603,7 @@ class _TableCalendarState<T> extends State<TableCalendar<T>> {
           isTodayHighlighted: widget.calendarStyle.isTodayHighlighted,
           isToday: isToday,
           isSelected: widget.selectedDayPredicate?.call(day) ?? false,
+          isSelected1: widget.selectedDayPredicate1?.call(day) ?? false,
           isRangeStart: isRangeStart,
           isRangeEnd: isRangeEnd,
           isWithinRange: isWithinRange,
